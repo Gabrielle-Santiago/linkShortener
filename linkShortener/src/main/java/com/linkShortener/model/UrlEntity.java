@@ -9,7 +9,7 @@ import java.time.Instant;
 
 @Getter
 @Setter
-@Document(collation = "urls")
+@Document(collection = "urls")
 public class UrlEntity {
 
     @Id
