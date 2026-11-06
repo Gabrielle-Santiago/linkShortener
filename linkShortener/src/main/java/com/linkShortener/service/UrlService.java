@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 @Service
 public class UrlService {
@@ -41,9 +42,19 @@ public class UrlService {
         Instant instant = Instant.now();
         entity.setCreateAt(instant.now());
         entity.setExpiresAt(instant.now().plus(30, ChronoUnit.DAYS));
-        
+
         repository.save(entity);
 
         return shortUrl;
+    }
+
+    public Optional<UrlEntity> getFullUrl(String shortUrl) {
+        Optional<UrlEntity> url = repository.findByShortUrl(shortUrl);
+
+        if (url.isEmpty()) {
+            throw new RuntimeException("URL not found");
+        }
+
+        return url;
     }
 }
