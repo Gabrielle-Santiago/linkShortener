@@ -13,7 +13,7 @@ import java.time.Instant;
 public class UrlEntity {
 
     @Id
-    private Long id;
+    private String id;
 
     private String fullUrl;
     private String shortUrl;
