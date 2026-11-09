@@ -1,5 +1,6 @@
 package com.linkShortener.service;
 
+import com.linkShortener.component.LinkValidations;
 import com.linkShortener.model.UrlEntity;
 import com.linkShortener.repository.UrlRepository;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,11 @@ public class UrlService {
     private String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private int code_length = 7;
     private SecureRandom random = new SecureRandom();
+    private LinkValidations validations;
 
-    public UrlService(UrlRepository repository) {
+    public UrlService(UrlRepository repository, LinkValidations validations) {
         this.repository = repository;
+        this.validations = validations;
     }
 
     public String generateShortUrl(){
@@ -37,6 +40,12 @@ public class UrlService {
 
         UrlEntity entity = new UrlEntity();
         entity.setFullUrl(fullUrl);
+
+        String existingUrl = validations.checkExistingLinks(fullUrl);
+        if (existingUrl != null) {
+            return existingUrl;
+        }
+
         entity.setShortUrl(shortUrl);
 
         Instant instant = Instant.now();
