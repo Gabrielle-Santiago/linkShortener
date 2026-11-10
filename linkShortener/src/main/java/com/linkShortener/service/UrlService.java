@@ -51,6 +51,8 @@ public class UrlService {
             return checkFullUrl;
         }
 
+        validations.checkUrlValidFormat(fullUrl);
+
         entity.setShortUrl(shortUrl);
 
         Instant instant = Instant.now();
