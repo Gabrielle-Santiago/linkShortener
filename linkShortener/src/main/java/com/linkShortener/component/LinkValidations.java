@@ -24,4 +24,10 @@ public class LinkValidations {
                 .map(UrlEntity::getShortUrl)
                 .orElse(null);
     }
+
+    public String checkExistingUrl(String fullUrl) {
+        return repository.findByFullUrl(fullUrl)
+                .map(url -> checkExistingShortLinks(url.getShortUrl()))
+                .orElse(null);
+    }
 }

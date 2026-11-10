@@ -46,6 +46,11 @@ public class UrlService {
             return existingUrl;
         }
 
+        String checkFullUrl = validations.checkExistingUrl(fullUrl);
+        if (checkFullUrl != null) {
+            return checkFullUrl;
+        }
+
         entity.setShortUrl(shortUrl);
 
         Instant instant = Instant.now();
