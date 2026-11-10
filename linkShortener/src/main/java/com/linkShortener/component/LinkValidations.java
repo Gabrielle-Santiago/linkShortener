@@ -18,4 +18,10 @@ public class LinkValidations {
                 .map(UrlEntity::getShortUrl)
                 .orElse(null);
     }
+
+    public String checkExistingShortLinks(String shortUrl) {
+        return repository.findByShortUrl(shortUrl)
+                .map(UrlEntity::getShortUrl)
+                .orElse(null);
+    }
 }
