@@ -76,6 +76,32 @@ h1 {
 }
 
 
+.result-actions {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.result-actions[hidden] {
+    display: none;
+}
+
+.result-actions .btn {
+    position: static;
+    transform: none;
+}
+
+#message {
+    color: #dfdfdf;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+
 @media (max-width: 1200px) {
     h1 {
         font-size: 60px;

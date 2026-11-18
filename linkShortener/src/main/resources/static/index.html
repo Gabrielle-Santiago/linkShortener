@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtador de Links</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/icon/chain.ico" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <form class="form" id="url-form">
+            <h1>Encurtador de Links</h1>
+
+            <div class="input-container">
+                <input class="input" id="url-input" type="url" placeholder="Cole seu link aqui..." required>
+
+                <button class="btn" id="shorten-btn" type="submit">
+                    <img src="img/arrow-right.png" alt="Shorten link">
+                </button>
+
+                <div class="result-actions" id="result-actions" hidden>
+                    <button class="btn" id="copy-btn" type="button">
+                        <img src="img/copy.png" alt="Copy link">
+                    </button>
+
+                    <button class="btn" id="reset-btn" type="button">
+                        <img src="img/circle.png" alt="Shorten another link">
+                    </button>
+                </div>
+            </div>
+
+            <p id="message" aria-live="polite"></p>
+        </form>
+
+        <script src="script.js" defer></script>
+    </main>
+</body>
+</html>
